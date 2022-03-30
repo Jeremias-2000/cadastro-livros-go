@@ -1,7 +1,10 @@
 package controller
 
 import (
+	
+	"fmt"
 	"net/http"
+	"strconv"
 
 	"github.com/book-management/pkg/model"
 	"github.com/book-management/pkg/service"
@@ -36,7 +39,15 @@ func (b *BookController) GetBooks(ctx *gin.Context){
 }
 
 func (b *BookController) 	GetBookById(ctx *gin.Context){
+	id:= ctx.Param("id")
+	bookId,err:= strconv.ParseInt(id,0,0)
 	
+	if err != nil {
+		fmt.Println("error while parsing")
+	}
+	book:= b.bookService.GetBookById(&bookId)
+	
+	ctx.JSON(http.StatusOK,book)
 }
 func (b *BookController) CreateBook(ctx *gin.Context){
 	var book model.Book

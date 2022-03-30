@@ -48,19 +48,16 @@ func (b *BookServiceImpl) CreateBook(book *model.Book) (*model.Book,error) {
 }
 
 
+
+// UpdateBook implements BookService
+func (*BookServiceImpl) UpdateBook(*model.Book) error {
+	panic("unimplemented")
+}
+
 // DeleteBook implements BookService
 func (b *BookServiceImpl) DeleteBook(ID *int64) *model.Book {
 	var book *model.Book
 	b.db.Where("ID=?",ID).Delete(&book)
 	return book
-}
-
-
-
-
-
-// UpdateBook implements BookService
-func (*BookServiceImpl) UpdateBook(*model.Book) error {
-	panic("unimplemented")
 }
 
