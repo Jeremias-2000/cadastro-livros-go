@@ -18,7 +18,7 @@ var (
 	bookcontroller controller.BookController
 	ctx            context.Context
 	db             *gorm.DB
-	book           model.Book
+	book           *model.Book
 )
 
 
